@@ -22,9 +22,9 @@ public class Resident extends TimestampEntity {
     private ResidentId id;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @MapsId("roomId")
+    @MapsId("unitId")
     @ToString.Exclude
-    private AccommodationUnit room;
+    private AccommodationUnit unit;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @MapsId("userId")

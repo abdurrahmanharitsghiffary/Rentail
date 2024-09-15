@@ -20,20 +20,16 @@ public class InvoiceItem extends BaseEntity {
     @Column(name = "item_id")
     private String itemId;
 
-    @NotNull
+    @Column(nullable = false)
     private String name;
 
     @Lob
     private String description;
 
-    @PositiveOrZero
     @Column(nullable = false)
-    @NotNull
     private Long price;
 
     @Column(nullable = false)
-    @Positive
-    @NotNull
     private Long quantity;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)

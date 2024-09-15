@@ -15,8 +15,8 @@ import java.util.UUID;
 @Data
 @Builder
 public class ResidentId {
-    @Column(name = "kos_room_id", nullable = false)
-    private UUID roomId;
+    @Column(name = "unitId", nullable = false)
+    private UUID unitId;
 
     @Column(name = "user_id", nullable = false)
     private UUID userId;

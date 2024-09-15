@@ -25,7 +25,7 @@ public class UserAddress extends BaseEntity {
     @Column(name = "phone_number", length = 50, nullable = false)
     private String phoneNumber;
 
-    @Email
+    @Column(nullable = false)
     private String email;
 
     @Lob
@@ -34,13 +34,13 @@ public class UserAddress extends BaseEntity {
     @Lob
     private String address;
 
-    @NotEmpty
+    @Column(nullable = false)
     private String regency;
 
-    @NotEmpty
+    @Column(nullable = false)
     private String province;
 
-    @NotEmpty
+    @Column(nullable = false)
     private String district;
 
     @Column(name = "urban_village")
@@ -49,12 +49,14 @@ public class UserAddress extends BaseEntity {
     @Column(name = "postal_code")
     private String postalCode;
 
+    @Column(nullable = false)
     private String longitude;
 
+    @Column(nullable = false)
     private String latitude;
 
     @Column(name = "is_main_address")
-    private String isMainAddress;
+    private Boolean isMainAddress = false;
 
 
 }

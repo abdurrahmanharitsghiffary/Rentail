@@ -18,6 +18,6 @@ public class BookingId {
     @JoinColumn(name = "user_id", nullable = false)
     private UUID userId;
 
-    @JoinColumn(name = "kos_room_id", nullable = false)
-    private UUID roomId;
+    @JoinColumn(name = "unit_id", nullable = false)
+    private UUID unitId;
 }

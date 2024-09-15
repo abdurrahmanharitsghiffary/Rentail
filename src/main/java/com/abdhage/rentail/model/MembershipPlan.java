@@ -1,6 +1,6 @@
 package com.abdhage.rentail.model;
 
-import com.abdhage.rentail.enums.MembershipPlanType;
+import com.abdhage.rentail.model.enums.MembershipPlanType;
 import com.abdhage.rentail.model.common.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -20,21 +20,17 @@ import java.util.Set;
 @AllArgsConstructor
 @Table(name = "membership_plans")
 public class MembershipPlan extends BaseEntity {
-    @Column(length = 100)
-    @NotEmpty
+    @Column(length = 100, nullable = false)
     private String name;
 
     @Lob
     private String description;
 
     @Column(nullable = false)
-    @PositiveOrZero
-    @NotNull
     private Long price;
 
-    @Enumerated
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
-    @NotNull
     private MembershipPlanType type;
 
     @OneToMany(mappedBy = "membershipPlan", cascade = CascadeType.ALL, orphanRemoval = true)

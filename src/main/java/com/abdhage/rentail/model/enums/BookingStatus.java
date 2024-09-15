@@ -1,4 +1,4 @@
-package com.abdhage.rentail.enums;
+package com.abdhage.rentail.model.enums;
 
 public enum BookingStatus {
     CANCELLED,

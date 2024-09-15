@@ -1,6 +1,6 @@
 package com.abdhage.rentail.model;
 
-import com.abdhage.rentail.enums.TokenType;
+import com.abdhage.rentail.model.enums.TokenType;
 import com.abdhage.rentail.model.common.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -19,12 +19,11 @@ public class Token extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String token;
 
-    @NotNull
     @Column(nullable = false)
-    @Enumerated
+    @Enumerated(EnumType.ORDINAL)
     private TokenType type;
 
-    @Column(name = "expires_at")
+    @Column(name = "expires_at", nullable = false)
     private Long expiresAt;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)

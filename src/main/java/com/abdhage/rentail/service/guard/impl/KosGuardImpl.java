@@ -1,6 +1,6 @@
 package com.abdhage.rentail.service.guard.impl;
 
-import com.abdhage.rentail.enums.CollabolatorRole;
+import com.abdhage.rentail.model.enums.AgentRole;
 import com.abdhage.rentail.exception.ForbiddenKosActionException;
 import com.abdhage.rentail.model.AccommodationAgent;
 import com.abdhage.rentail.model.ids.AgentId;
@@ -19,13 +19,13 @@ public class KosGuardImpl implements KosGuard {
 
     @Override
     public void verifyPermission(AccommodationAgent accommodationAgent) {
-        if (accommodationAgent.getRole() != CollabolatorRole.CREATOR) throw new ForbiddenKosActionException();
+        if (accommodationAgent.getRole() != AgentRole.LANDLORD) throw new ForbiddenKosActionException();
     }
 
     @Override
     public void verifyPermissionById(AgentId id) {
         kosCollaboratorRepository.findById(id).ifPresent(kosCollaborator -> {
-            if (kosCollaborator.getRole() != CollabolatorRole.CREATOR) throw new ForbiddenKosActionException();
+            if (kosCollaborator.getRole() != AgentRole.LANDLORD) throw new ForbiddenKosActionException();
         });
     }
 }

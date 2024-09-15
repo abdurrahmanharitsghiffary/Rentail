@@ -1,6 +1,6 @@
 package com.abdhage.rentail.model;
 
-import com.abdhage.rentail.enums.UserRole;
+import com.abdhage.rentail.model.enums.UserRole;
 import com.abdhage.rentail.model.common.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -23,28 +24,19 @@ import java.util.Set;
 @Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
 
-    @NotNull
-    @Email
     @Column(unique = true, nullable = false, length = 50)
     private String email;
 
-    @Pattern(message = "Password must contain at least 1 Uppercase, 1 Lowercase, and 1 Number", regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$")
-    @NotEmpty
     @Column(nullable = false)
     private String password;
 
-    @NotNull
-    @Enumerated
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private UserRole role;
 
-    @Size(min = 2)
-    @NotEmpty
     @Column(nullable = false, name = "display_name")
     private String displayName;
 
-    @Size(min = 2)
-    @NotEmpty
     @Column(nullable = false, unique = true, length = 150)
     private String username;
 
@@ -53,48 +45,48 @@ public class User extends BaseEntity implements UserDetails {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private Set<UserAddress> addresses;
+    private Set<UserAddress> addresses = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private Set<Token> tokens;
+    private Set<Token> tokens = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private Set<Account> accounts;
+    private Set<Account> accounts = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private Set<Invoice> invoices;
+    private Set<Invoice> invoices = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private Set<AccommodationAgent> ownedKos;
+    private Set<AccommodationAgent> ownedKos = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private Set<Membership> memberships;
+    private Set<Membership> memberships = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private Set<AccommodationBooking> accommodationBookings;
+    private Set<AccommodationBooking> accommodationBookings = new HashSet<>();
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private Set<Message> authoredMessages;
+    private Set<Message> authoredMessages = new HashSet<>();
 
     @OneToMany(mappedBy = "recipient", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private Set<Message> receivedMessages;
+    private Set<Message> receivedMessages = new HashSet<>();
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "bookmarks", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "kos_id")})
     @ToString.Exclude
-    private Set<Accommodation> bookmarks;
+    private Set<Accommodation> bookmarks = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private Set<Resident> occupiedKos;
+    private Set<Resident> occupiedKos = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

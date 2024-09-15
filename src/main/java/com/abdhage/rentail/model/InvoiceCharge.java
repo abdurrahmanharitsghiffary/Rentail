@@ -1,6 +1,6 @@
 package com.abdhage.rentail.model;
 
-import com.abdhage.rentail.enums.ChargeType;
+import com.abdhage.rentail.model.enums.ChargeType;
 import com.abdhage.rentail.model.common.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -17,14 +17,11 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @Table(name = "invoice_charges")
 public class InvoiceCharge extends BaseEntity {
-    @NotNull
-    @Enumerated
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private ChargeType type;
 
     @Column(nullable = false)
-    @NotNull
-    @PositiveOrZero
     private Long amount;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)

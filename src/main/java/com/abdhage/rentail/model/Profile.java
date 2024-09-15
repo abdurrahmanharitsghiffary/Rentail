@@ -1,6 +1,6 @@
 package com.abdhage.rentail.model;
 
-import com.abdhage.rentail.enums.Gender;
+import com.abdhage.rentail.model.enums.Gender;
 import com.abdhage.rentail.model.common.TimestampEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,11 +26,9 @@ public class Profile extends TimestampEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date birthDate;
 
-    @URL
     @Lob
     private String avatar;
 
-    @URL
     @Lob
     private String cover;
 

@@ -1,13 +1,12 @@
 package com.abdhage.rentail.model;
 
 import com.abdhage.rentail.model.common.BaseEntity;
+import com.abdhage.rentail.model.enums.AccommodationType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -22,19 +21,17 @@ public class Accommodation extends BaseEntity {
     @Column(length = 150, nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "accommodation", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "accommodation", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Image> images = new HashSet<>();
 
-    @Column(columnDefinition = "text[]")
-    private List<String> facilities = new ArrayList<>();
-
-    public List<String> getFacilities() {
-        if (facilities == null) return new ArrayList<>();
-        return facilities;
-    }
+    @OneToMany(mappedBy = "accommodation", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Facility> facilities = new HashSet<>();
 
     @Column(nullable = false, name = "is_verified")
     private Boolean isVerified = false;
+
+    @Column(name = "accommodation_type", nullable = false)
+    private AccommodationType accommodationType;
 
     @Lob
     private String description;
@@ -55,7 +52,7 @@ public class Accommodation extends BaseEntity {
     @ToString.Exclude
     private Set<User> bookers;
 
-    @OneToOne(mappedBy = "accommodation", optional = false, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "accommodation", optional = false)
     @ToString.Exclude
-    private AccommodationAddress accommodationAddress;
+    private AccommodationAddress address;
 }

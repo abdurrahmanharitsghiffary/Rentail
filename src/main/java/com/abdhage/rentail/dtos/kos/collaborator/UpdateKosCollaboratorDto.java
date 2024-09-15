@@ -1,6 +1,6 @@
 package com.abdhage.rentail.dtos.kos.collaborator;
 
-import com.abdhage.rentail.enums.CollabolatorRole;
+import com.abdhage.rentail.model.enums.AgentRole;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UpdateKosCollaboratorDto {
     @NotNull
-    private CollabolatorRole role;
+    private AgentRole role;
 }

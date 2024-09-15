@@ -1,10 +1,9 @@
 package com.abdhage.rentail.model;
 
-import com.abdhage.rentail.enums.BookingStatus;
+import com.abdhage.rentail.model.enums.BookingStatus;
 import com.abdhage.rentail.model.common.TimestampEntity;
 import com.abdhage.rentail.model.ids.BookingId;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -29,17 +28,16 @@ public class AccommodationBooking extends TimestampEntity {
     private User user;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    @MapsId("roomId")
+    @MapsId("unitId")
     @ToString.Exclude
-    private AccommodationUnit room;
+    private AccommodationUnit unit;
 
     @Lob
     private String notes;
 
-    @NotNull
-    @Enumerated
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
-    private BookingStatus status;
+    private BookingStatus status = BookingStatus.PENDING;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "expiration_date")

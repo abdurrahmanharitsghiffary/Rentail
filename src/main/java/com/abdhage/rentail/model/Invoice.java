@@ -1,6 +1,6 @@
 package com.abdhage.rentail.model;
 
-import com.abdhage.rentail.enums.InvoiceStatus;
+import com.abdhage.rentail.model.enums.InvoiceStatus;
 import com.abdhage.rentail.model.common.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -19,8 +19,6 @@ import java.util.Set;
 @AllArgsConstructor
 @Table(name = "invoices")
 public class Invoice extends BaseEntity {
-    @PositiveOrZero
-    @NotNull
     @Column(nullable = false)
     private Long amount;
 
@@ -28,7 +26,7 @@ public class Invoice extends BaseEntity {
     private String invoiceId;
 
     @Enumerated(EnumType.ORDINAL)
-    @NotNull
+    @Column(nullable = false)
     private InvoiceStatus status;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)

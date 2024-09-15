@@ -15,8 +15,8 @@ import java.util.UUID;
 @Data
 @Builder
 public class AgentId {
-    @Column(name = "kos_id", nullable = false)
-    private UUID kosId;
+    @Column(name = "accommodation_id", nullable = false)
+    private UUID accommodationId;
 
     @Column(name = "user_id", nullable = false)
     private UUID userId;

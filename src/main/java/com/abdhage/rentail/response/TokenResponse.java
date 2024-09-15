@@ -1,6 +1,6 @@
 package com.abdhage.rentail.response;
 
-import com.abdhage.rentail.enums.TokenType;
+import com.abdhage.rentail.model.enums.TokenType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

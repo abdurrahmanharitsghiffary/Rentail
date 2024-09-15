@@ -2,7 +2,7 @@ package com.abdhage.rentail.service.impl;
 
 import com.abdhage.rentail.dtos.user.CreateUserDto;
 import com.abdhage.rentail.dtos.user.UpdateUserDto;
-import com.abdhage.rentail.enums.UserRole;
+import com.abdhage.rentail.model.enums.UserRole;
 import com.abdhage.rentail.mapper.UserMapper;
 import com.abdhage.rentail.model.Profile;
 import com.abdhage.rentail.model.User;

@@ -1,6 +1,6 @@
 package com.abdhage.rentail.response;
 
-import com.abdhage.rentail.enums.UserRole;
+import com.abdhage.rentail.model.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
