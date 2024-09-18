@@ -1,0 +1,11 @@
+package com.abdhage.rentail.features.membership.repository;
+
+import com.abdhage.rentail.features.membership.model.InvoiceCharge;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.UUID;
+
+@Repository
+public interface InvoiceChargeRepository extends JpaRepository<InvoiceCharge, UUID> {
+}

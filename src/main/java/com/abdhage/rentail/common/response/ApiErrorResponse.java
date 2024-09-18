@@ -9,13 +9,11 @@ import java.util.List;
 public class ApiErrorResponse<E> extends ApiResponse<NullType> {
     private final String name;
     private final List<E> errors;
-    private final String message;
 
     public ApiErrorResponse(String message, Integer status, String name, List<E> errors) {
-        super(null, status);
+        super(null, status, message);
 
         this.name = name;
         this.errors = errors;
-        this.message = message;
     }
 }
