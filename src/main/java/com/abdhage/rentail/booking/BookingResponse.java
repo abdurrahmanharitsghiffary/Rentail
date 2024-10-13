@@ -19,7 +19,7 @@ public class BookingResponse {
 
     private String notes;
     private BookingStatus status;
-    private Date expirationDate;
+    private Date startFrom;
     private User user;
     private AccommodationUnit unit;
 

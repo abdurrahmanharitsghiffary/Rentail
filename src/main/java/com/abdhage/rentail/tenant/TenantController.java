@@ -34,7 +34,6 @@ public class TenantController {
         return tenantService.create(createTenantDTO);
     }
 
-    
     @PatchMapping("units/{unitId}/tenants/{tenantId}")
     public TenantResponse update(@PathVariable("unitId") UUID unitId, @PathVariable("tenantId") UUID tenantId, @Valid @RequestBody UpdateTenantDTO updateTenantDTO) {
         return tenantService.update(new TenantId(unitId, tenantId), updateTenantDTO);

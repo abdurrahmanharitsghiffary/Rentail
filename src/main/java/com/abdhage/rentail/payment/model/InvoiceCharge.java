@@ -1,4 +1,4 @@
-package com.abdhage.rentail.membership.model;
+package com.abdhage.rentail.payment.model;
 
 import com.abdhage.rentail.common.model.BaseEntity;
 import jakarta.persistence.*;

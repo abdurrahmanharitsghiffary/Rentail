@@ -47,7 +47,9 @@ public class AuthServiceImpl implements AuthService {
                 )
         );
 
-        final User user = userRepository.findByEmail(signInDto.getEmail()).orElseThrow(InvalidCredentialsException::new);
+        final User user = userRepository
+                .findByEmail(signInDto.getEmail())
+                .orElseThrow(InvalidCredentialsException::new);
 
         final String jwtToken = jwtService.generateToken(user);
         final Token token = Token.builder()
@@ -89,7 +91,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public User getLoggedUserInformations() {
-        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        final Authentication authentication = SecurityContextHolder
+                .getContext()
+                .getAuthentication();
 
         if (authentication != null && authentication.getPrincipal() instanceof User user) {
             return userRepository

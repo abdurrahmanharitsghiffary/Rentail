@@ -40,6 +40,6 @@ public class Booking extends TimestampEntity {
     private BookingStatus status = BookingStatus.PENDING;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "expiration_date")
-    private Date expirationDate;
+    @Column(name = "startFrom")
+    private Date startFrom;
 }

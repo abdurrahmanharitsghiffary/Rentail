@@ -5,7 +5,7 @@ import com.abdhage.rentail.accommodationagent.model.AccommodationAgent;
 import com.abdhage.rentail.account.model.Account;
 import com.abdhage.rentail.booking.model.Booking;
 import com.abdhage.rentail.common.model.BaseEntity;
-import com.abdhage.rentail.membership.model.Invoice;
+import com.abdhage.rentail.payment.model.Invoice;
 import com.abdhage.rentail.membership.model.Membership;
 import com.abdhage.rentail.message.model.Message;
 import com.abdhage.rentail.tenant.model.Tenant;

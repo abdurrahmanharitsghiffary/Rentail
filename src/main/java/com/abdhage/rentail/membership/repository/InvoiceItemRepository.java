@@ -1,6 +1,6 @@
 package com.abdhage.rentail.membership.repository;
 
-import com.abdhage.rentail.membership.model.InvoiceItem;
+import com.abdhage.rentail.payment.model.InvoiceItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

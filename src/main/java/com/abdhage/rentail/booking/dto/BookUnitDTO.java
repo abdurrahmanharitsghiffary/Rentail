@@ -1,7 +1,9 @@
 package com.abdhage.rentail.booking.dto;
 
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Date;
 import java.util.UUID;
 
 import lombok.AllArgsConstructor;
@@ -18,5 +20,8 @@ public class BookUnitDTO {
     private String notes;
     @NotNull
     private UUID unitId;
+
+    @FutureOrPresent
+    private Date startFrom;
 
 }
