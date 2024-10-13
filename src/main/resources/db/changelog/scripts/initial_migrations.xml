@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet author="REZA (generated)" id="1726890874029-1">
+        <createTable tableName="accommodation">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="accommodation_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="accommodation_type" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="OID"/>
+            <column name="is_verified" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(150)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-2">
+        <createTable tableName="accommodation_agents">
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="role" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accommodation_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-3">
+        <createTable tableName="accommodation_bookings">
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="expiration_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="notes" type="OID"/>
+            <column name="status" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-4">
+        <createTable tableName="accommodation_units">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="accommodation_units_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="booking_price" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="OID"/>
+            <column name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_type" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accommodation_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-5">
+        <createTable tableName="accounts">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="accounts_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="is_verified" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="provider_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="provider_type" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-6">
+        <createTable tableName="invoice_charges">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="invoice_charges_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="amount" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoice_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-7">
+        <createTable tableName="invoices">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="invoices_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="amount" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoice_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-8">
+        <createTable tableName="membership_plans">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="membership_plans_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="OID"/>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-9">
+        <createTable tableName="profiles">
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="profiles_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="avatar" type="OID"/>
+            <column name="birth_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="cover" type="OID"/>
+            <column name="gender" type="SMALLINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-10">
+        <createTable tableName="tokens">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="tokens_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="expires_at" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="token" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-11">
+        <createTable tableName="users">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="display_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="inform_latest_news" type="BOOLEAN"/>
+            <column name="inform_recommendations" type="BOOLEAN"/>
+            <column name="is_verified" type="BOOLEAN"/>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(150)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-12">
+        <addUniqueConstraint columnNames="name" constraintName="uk7rmwyvoqkhk1kauvqbg9lrjdo" tableName="accommodation"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-13">
+        <addUniqueConstraint columnNames="provider_id, provider_type" constraintName="ukmen8ngy8xvts065n8dajk3upd"
+                             tableName="accounts"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-14">
+        <addUniqueConstraint columnNames="invoice_id" constraintName="ukin8ejtpjwbmf9llvtr68vty6t"
+                             tableName="invoices"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-15">
+        <addUniqueConstraint columnNames="token" constraintName="ukna3v9f8s7ucnj16tylrs822qj" tableName="tokens"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-16">
+        <addUniqueConstraint columnNames="email" constraintName="uk6dotkott2kjsp8vw4d0m25fb7" tableName="users"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-17">
+        <addUniqueConstraint columnNames="username" constraintName="ukr43af9ap4edm43mmtq01oddj6" tableName="users"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-18">
+        <createTable tableName="accommodation_addresses">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="accommodation_addresses_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="address" type="OID"/>
+            <column name="description" type="OID"/>
+            <column name="district" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="latitude" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="longitude" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postal_code" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="province" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="regency" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="urban_village" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-19">
+        <createTable tableName="bookmarks">
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="bookmarks_pkey"/>
+            </column>
+            <column name="kos_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="bookmarks_pkey"/>
+            </column>
+            <column name="accommodation_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-20">
+        <createTable tableName="facilities">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="facilities_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="OID"/>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="accommodation_id" type="UUID"/>
+            <column name="accommodation_unit_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-21">
+        <createTable tableName="images">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="images_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="OID"/>
+            <column name="src" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accommodation_id" type="UUID"/>
+            <column name="accommodation_unit" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-22">
+        <createTable tableName="invoice_items">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="invoice_items_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="OID"/>
+            <column name="item_id" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoice_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-23">
+        <createTable tableName="memberships">
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="end_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="membership_plan_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-24">
+        <createTable tableName="messages">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="messages_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="attachments" type="TEXT[]"/>
+            <column name="content" type="OID"/>
+            <column name="kos_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recipient_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accommodation_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-25">
+        <createTable tableName="tenants">
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="end_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-26">
+        <createTable tableName="user_addresses">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_addresses_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="address" type="OID"/>
+            <column name="description" type="OID"/>
+            <column name="district" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_main_address" type="BOOLEAN"/>
+            <column name="latitude" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="longitude" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postal_code" type="VARCHAR(255)"/>
+            <column name="province" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="regency" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="urban_village" type="VARCHAR(255)"/>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-27">
+        <addPrimaryKey columnNames="accommodation_id, user_id" constraintName="accommodation_agents_pkey"
+                       tableName="accommodation_agents"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-28">
+        <addPrimaryKey columnNames="unit_id, user_id" constraintName="accommodation_bookings_pkey"
+                       tableName="accommodation_bookings"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-29">
+        <addPrimaryKey columnNames="membership_plan_id, user_id" constraintName="memberships_pkey"
+                       tableName="memberships"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-30">
+        <addPrimaryKey columnNames="unit_id, user_id" constraintName="tenants_pkey" tableName="tenants"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-31">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="tenants"
+                                 constraintName="fk1gbulcqli8dtngbforwml4n4l" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-32">
+        <addForeignKeyConstraint baseColumnNames="accommodation_unit_id" baseTableName="facilities"
+                                 constraintName="fk22ie4njl9sef87jrmjy9m7jra" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation_units" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-33">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="tokens"
+                                 constraintName="fk2dylsfo39lgjyqml2tbe0b0ss" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-34">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="accommodation_bookings"
+                                 constraintName="fk30qown1dmnqmx2hfn718agsbs" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-35">
+        <addForeignKeyConstraint baseColumnNames="unit_id" baseTableName="tenants"
+                                 constraintName="fk3y8ynokjeb7d3s4gpwx74i3a5" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation_units" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-36">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="profiles"
+                                 constraintName="fk410q61iev7klncmpqfuo85ivh" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-37">
+        <addForeignKeyConstraint baseColumnNames="invoice_id" baseTableName="invoice_items"
+                                 constraintName="fk46ae0lhu1oqs7cv91fn6y9n7w" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="invoices" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-38">
+        <addForeignKeyConstraint baseColumnNames="kos_id" baseTableName="bookmarks"
+                                 constraintName="fk4fhpbl7e36i3mfjal4qg74jh7" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-39">
+        <addForeignKeyConstraint baseColumnNames="membership_plan_id" baseTableName="memberships"
+                                 constraintName="fk7tee5yue4fqo0s28k13yyyg6x" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="membership_plans" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-40">
+        <addForeignKeyConstraint baseColumnNames="kos_id" baseTableName="messages"
+                                 constraintName="fk8hbbdsinq6b6hxp5wfh6pjjhc" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-41">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="accommodation_agents"
+                                 constraintName="fk97nnojaeolijrolx3bq5e9qle" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-42">
+        <addForeignKeyConstraint baseColumnNames="accommodation_id" baseTableName="accommodation_agents"
+                                 constraintName="fk9h61355i6ov3uf4q5a3we063q" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-43">
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="accommodation_addresses"
+                                 constraintName="fkaareyhqin92wba6o16iqui27k" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-44">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="invoices"
+                                 constraintName="fkbwr4d4vyqf2bkoetxtt8j9dx7" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-45">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="bookmarks"
+                                 constraintName="fkdbsho2e05w5r13fkjqfjmge5f" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-46">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="memberships"
+                                 constraintName="fkdjormybfoo7f4i4d4r803qohb" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-47">
+        <addForeignKeyConstraint baseColumnNames="unit_id" baseTableName="accommodation_bookings"
+                                 constraintName="fke5kkrixj7svr787ol11aneega" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation_units" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-48">
+        <addForeignKeyConstraint baseColumnNames="accommodation_id" baseTableName="messages"
+                                 constraintName="fkeddyh3j3nq08ouvhlxdrgngl" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-49">
+        <addForeignKeyConstraint baseColumnNames="accommodation_id" baseTableName="bookmarks"
+                                 constraintName="fkevtqkhv755g6dnhyvpgm429dn" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-50">
+        <addForeignKeyConstraint baseColumnNames="accommodation_id" baseTableName="images"
+                                 constraintName="fkg4nsqkrayiwf7ebgjw170sypf" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-51">
+        <addForeignKeyConstraint baseColumnNames="accommodation_unit" baseTableName="images"
+                                 constraintName="fkguc00n4sw9lo201uxi9kbny0y" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation_units" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-52">
+        <addForeignKeyConstraint baseColumnNames="recipient_id" baseTableName="messages"
+                                 constraintName="fkhdkwfnspwb3s60j27vpg0rpg6" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-53">
+        <addForeignKeyConstraint baseColumnNames="accommodation_id" baseTableName="facilities"
+                                 constraintName="fkhm5abxtogescydi34evw5pf1c" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-54">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_addresses"
+                                 constraintName="fkn2fisxyyu3l9wlch3ve2nocgp" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-55">
+        <addForeignKeyConstraint baseColumnNames="accommodation_id" baseTableName="accommodation_units"
+                                 constraintName="fkni1vdto9vu8570l3w4u2hh2te" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="accommodation" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-56">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="accounts"
+                                 constraintName="fknjuop33mo69pd79ctplkck40n" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-57">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="messages"
+                                 constraintName="fkowtlim26svclkatusptbgi7u1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="REZA (generated)" id="1726890874029-58">
+        <addForeignKeyConstraint baseColumnNames="invoice_id" baseTableName="invoice_charges"
+                                 constraintName="fkt38wovxtm4uqpouyjqvqoklk3" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="invoices" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

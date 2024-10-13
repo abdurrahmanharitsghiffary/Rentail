@@ -2,9 +2,9 @@ package com.abdhage.rentail.common.service.impl;
 
 import com.abdhage.rentail.common.exception.BadRequestException;
 import com.abdhage.rentail.common.service.TokenService;
-import com.abdhage.rentail.features.token.TokenRepository;
-import com.abdhage.rentail.features.token.model.Token;
-import com.abdhage.rentail.features.token.model.TokenType;
+import com.abdhage.rentail.token.TokenRepository;
+import com.abdhage.rentail.token.model.Token;
+import com.abdhage.rentail.token.model.TokenType;
 import org.springframework.stereotype.Service;
 
 @Service

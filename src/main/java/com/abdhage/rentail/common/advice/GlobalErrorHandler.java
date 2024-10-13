@@ -9,6 +9,7 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AccountStatusException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -76,6 +77,7 @@ public class GlobalErrorHandler {
 
             errorDetail = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
             if (exception instanceof NoResourceFoundException) {
+                errorDetail.setDetail("Route not found");
                 errorDetail.setStatus(HttpStatus.NOT_FOUND);
             } else if (exception instanceof HttpRequestMethodNotSupportedException) {
                 errorDetail.setStatus(HttpStatus.METHOD_NOT_ALLOWED);
@@ -102,6 +104,9 @@ public class GlobalErrorHandler {
         } else if (exception instanceof MaxUploadSizeExceededException) {
             errorDetail = ProblemDetail.forStatusAndDetail(HttpStatus.EXPECTATION_FAILED, exception.getMessage());
             errorDetail.setProperty("description", "File size too large");
+        } else if (exception instanceof UsernameNotFoundException) {
+            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, exception.getMessage());
+            errorDetail.setProperty("description", "Unauthorized");
         } else {
             errorDetail = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
             errorDetail.setProperty("description", "Internal server error.");

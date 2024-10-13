@@ -1,6 +1,6 @@
 package com.abdhage.rentail.common.config;
 
-import com.abdhage.rentail.features.user.UserRepository;
+import com.abdhage.rentail.user.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

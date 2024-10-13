@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="REZA" id="seed_user_table_v1">
+        <insert tableName="users">
+            <column name="id" valueComputed="gen_random_uuid()"/>
+            <column name="email">
+                mail@example.com
+            </column>
+            <column name="password">
+                12345678
+            </column>
+            <column name="role">
+                2
+            </column>
+            <column name="username">
+                sample1
+            </column>
+            <column name="display_name">
+                Jamal Boolean
+            </column>
+            <column name="is_verified">
+                true
+            </column>
+            <column name="created_at">
+                now()
+            </column>
+            <column name="updated_at">
+                now()
+            </column>
+            <column name="inform_latest_news">
+                true
+            </column>
+            <column name="inform_recommendations">
+                true
+            </column>
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueComputed="gen_random_uuid()"/>
+            <column name="email">
+                mail2@example.com
+            </column>
+            <column name="password">
+                12345678
+            </column>
+            <column name="role">
+                2
+            </column>
+            <column name="username">
+                sample2
+            </column>
+            <column name="display_name">
+                Jamal Boolean
+            </column>
+            <column name="is_verified">
+                true
+            </column>
+            <column name="created_at">
+                now()
+            </column>
+            <column name="updated_at">
+                now()
+            </column>
+            <column name="inform_latest_news">
+                true
+            </column>
+            <column name="inform_recommendations">
+                true
+            </column>
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueComputed="gen_random_uuid()"/>
+
+            <column name="email">
+                mail3@example.com
+            </column>
+            <column name="password">
+                12345678
+            </column>
+            <column name="role">
+                2
+            </column>
+            <column name="username">
+                sample3
+            </column>
+            <column name="display_name">
+                Jamal Boolean
+            </column>
+            <column name="is_verified">
+                true
+            </column>
+            <column name="created_at">
+                now()
+            </column>
+            <column name="updated_at">
+                now()
+            </column>
+            <column name="inform_latest_news">
+                true
+            </column>
+            <column name="inform_recommendations">
+                true
+            </column>
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueComputed="gen_random_uuid()"/>
+
+            <column name="email">
+                mail4@example.com
+            </column>
+            <column name="password">
+                12345678
+            </column>
+            <column name="role">
+                2
+            </column>
+            <column name="username">
+                sample4
+            </column>
+            <column name="display_name">
+                Jamal Boolean
+            </column>
+            <column name="is_verified">
+                true
+            </column>
+            <column name="created_at">
+                now()
+            </column>
+            <column name="updated_at">
+                now()
+            </column>
+            <column name="inform_latest_news">
+                true
+            </column>
+            <column name="inform_recommendations">
+                true
+            </column>
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueComputed="gen_random_uuid()"/>
+            <column name="email">
+                mail5@example.com
+            </column>
+            <column name="password">
+                12345678
+            </column>
+            <column name="role">
+                2
+            </column>
+            <column name="username">
+                sample5
+            </column>
+            <column name="display_name">
+                Jamal Boolean
+            </column>
+            <column name="is_verified">
+                true
+            </column>
+            <column name="created_at">
+                now()
+            </column>
+            <column name="updated_at">
+                now()
+            </column>
+            <column name="inform_latest_news">
+                true
+            </column>
+            <column name="inform_recommendations">
+                true
+            </column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
+

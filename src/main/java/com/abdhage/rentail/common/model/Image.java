@@ -1,7 +1,7 @@
 package com.abdhage.rentail.common.model;
 
-import com.abdhage.rentail.features.accommodation.model.Accommodation;
-import com.abdhage.rentail.features.accommodationunit.model.AccommodationUnit;
+import com.abdhage.rentail.accommodation.model.Accommodation;
+import com.abdhage.rentail.accommodationunit.model.AccommodationUnit;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;

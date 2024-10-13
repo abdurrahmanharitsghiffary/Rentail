@@ -87,6 +87,17 @@
         </dependency>
 
         <dependency>
+            <groupId>ch.usi.si.seart</groupId>
+            <artifactId>jakarta-validation-utils</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -166,6 +177,15 @@
                     <username>postgres</username>
                     <password>Vi14OccO41iV</password>
                     <outputChangeLogFile>src/main/resources/liquibase-outputChangeLog.xml</outputChangeLogFile>
+                    <changeLogFile>src/main/resources/db/changelog/db.changelog-master.xml</changeLogFile>
+                    <outputFile>
+                        src/main/resources/db.changelog/db.changelog-diff.xml
+                    </outputFile>
+                    <!--                    <referenceUrl>jdbc:postgresql://localhost:5432/kopos-->
+                    <!--                    </referenceUrl>-->
+                    <!--                    <referenceDriver>org.postgresql.Driver</referenceDriver>-->
+                    <!--                    <referencePassword>Vi14OccO41iV</referencePassword>-->
+                    <!--                    <referenceUsername>postgres</referenceUsername>-->
                 </configuration>
             </plugin>
             <plugin>
