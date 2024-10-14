@@ -75,7 +75,11 @@ public class BookingServiceImpl implements BookingService {
         Optional<Tenant> tenant = tenantRepository
                 .findById(new TenantId(dto.getUnitId(), loggedUser.getId()));
 
-        if (tenant.isEmpty() || booking.isEmpty()) {
+        if (
+                booking.isEmpty() || tenant.isEmpty() ||
+                        booking.get().getStatus() == BookingStatus.PENDING ||
+                        booking.get().getStatus() == BookingStatus.CONFIRMED
+        ) {
             throw new BadRequestException("You already booked this place");
         }
 
@@ -94,7 +98,6 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingResponse updateStatus(BookingId id, BookingStatus status) {
         Booking booking = checkBookingMustExists(id);
-
         booking.setStatus(status);
 
         return bookingMapper
@@ -156,12 +159,14 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void payBooking(BookingId bookingId) {
         Booking booking = checkBookingMustExists(bookingId);
+        verifyPermission(booking);
+
         SimpleDateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         AccommodationUnit unit = booking.getUnit();
         List<MidtransTransactionDTO.ItemDetail> itemDetails = new ArrayList<>();
 
         MidtransTransactionDTO.ItemDetail bookingDetail = new MidtransTransactionDTO.ItemDetail();
-        bookingDetail.setName("Booking unit until" + dt.format(booking.getStartFrom()));
+        bookingDetail.setName("Booking unit from " + dt.format(LocalDate.now()) + " to " + dt.format(booking.getStartFrom()));
 
         if (unit.getBookingPrice() != null) {
             long totalBookingDays = ChronoUnit.DAYS.between(

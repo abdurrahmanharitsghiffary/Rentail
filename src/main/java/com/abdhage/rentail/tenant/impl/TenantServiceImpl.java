@@ -107,7 +107,7 @@ public class TenantServiceImpl implements TenantService {
                 .orElseThrow(() -> new NotFoundException("Tenant not found"));
     }
 
-    // TODO : Should authorize each data before updating
+    // TODO : Should authorize each data before updating?
     @Override
     public int updateMany(UpdateTenantManyDTO dto) {
 

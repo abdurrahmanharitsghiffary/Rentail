@@ -6,3 +6,5 @@ public enum AccommodationType {
     RENTAL_HOUSE,
     KOST
 }
+
+
